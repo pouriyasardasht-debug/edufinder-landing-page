@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduFinder — Find the Right IT Training in Tampa Bay</title>
+  <meta name="description" content="Compare IT training programs in Tampa Bay side-by-side. Verified providers, transparent pricing, real reviews. Join the waitlist for early access.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== LIGHT THEME (DEFAULT) ===== */
+    :root, [data-theme="light"] {
+      --primary: #4f46e5;
+      --primary-dark: #4338ca;
+      --primary-light: #eef2ff;
+      --accent: #f59e0b;
+      --accent-light: #fef3c7;
+      --success: #10b981;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --text-soft: #94a3b8;
+      --bg: #ffffff;
+      --bg-soft: #f8fafc;
+      --bg-dark: #0f172a;
+      --border: #e2e8f0;
+      --card-bg: #ffffff;
+      --input-bg: #f8fafc;
+      --header-bg: rgba(255, 255, 255, 0.7);
+      --header-bg-scrolled: rgba(255, 255, 255, 0.92);
+      --btn-primary-bg: #0f172a;
+      --btn-primary-text: #ffffff;
+      --gradient-2: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #ec4899 100%);
+      --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.08);
+      --shadow-lg: 0 10px 25px -5px rgba(15, 23, 42, 0.1);
+      --shadow-xl: 0 25px 50px -12px rgba(15, 23, 42, 0.18);
+      --orb-opacity: 0.4;
+    }
+
+    /* ===== DARK THEME ===== */
+    [data-theme="dark"] {
+      --primary: #818cf8;
+      --primary-dark: #6366f1;
+      --primary-light: #312e81;
+      --accent: #fbbf24;
+      --accent-light: #78350f;
+      --success: #34d399;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --text-soft: #64748b;
+      --bg: #0b1120;
+      --bg-soft: #131c31;
+      --bg-dark: #050810;
+      --border: #1e293b;
+      --card-bg: #131c31;
+      --input-bg: #0b1120;
+      --header-bg: rgba(11, 17, 32, 0.7);
+      --header-bg-scrolled: rgba(11, 17, 32, 0.92);
+      --btn-primary-bg: #f1f5f9;
+      --btn-primary-text: #0f172a;
+      --gradient-2: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+      --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+      --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+      --orb-opacity: 0.15;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      transition: background-color 0.4s ease, color 0.4s ease;
+    }
+
+    /* === ANIMATED BACKGROUND ORBS === */
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: var(--orb-opacity);
+      z-index: 0;
+      pointer-events: none;
+      animation: float 20s ease-in-out infinite;
+      transition: opacity 0.4s ease;
+    }
+    .orb-1 { width: 500px; height: 500px; background: #a5b4fc; top: -200px; left: -100px; animation-delay: 0s; }
+    .orb-2 { width: 400px; height: 400px; background: #fbcfe8; top: 40%; right: -150px; animation-delay: -7s; }
+    .orb-3 { width: 350px; height: 350px; background: #fde68a; bottom: 10%; left: 10%; animation-delay: -14s; }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(30px, -40px) scale(1.1); }
+      66% { transform: translate(-20px, 30px) scale(0.95); }
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* === HEADER === */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: var(--header-bg);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid transparent;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+    header.scrolled {
+      background: var(--header-bg-scrolled);
+      border-bottom-color: var(--border);
+      box-shadow: var(--shadow-sm);
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+      gap: 20px;
+    }
+    .logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.35rem;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .logo-mark {
+      width: 36px; height: 36px;
+      background: var(--gradient-2);
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      color: white;
+      font-weight: 800;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.35);
+    }
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    .header-nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 500;
+      transition: color 0.2s;
+      position: relative;
+    }
+    .header-nav a:hover { color: var(--text); }
+    .header-nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0; height: 2px;
+      background: var(--primary);
+      transition: width 0.3s;
+    }
+    .header-nav a:hover::after { width: 100%; }
+
+    /* === THEME TOGGLE === */
+    .theme-toggle {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--card-bg);
+      color: var(--text);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .theme-toggle:hover {
+      border-color: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    .theme-toggle:active { transform: translateY(0) scale(0.95); }
+
+    .theme-toggle svg {
+      width: 20px;
+      height: 20px;
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s;
+      position: absolute;
+    }
+    .theme-toggle .icon-sun { opacity: 0; transform: rotate(90deg) scale(0.5); }
+    .theme-toggle .icon-moon { opacity: 1; transform: rotate(0deg) scale(1); }
+
+    [data-theme="dark"] .theme-toggle .icon-sun { opacity: 1; transform: rotate(0deg) scale(1); }
+    [data-theme="dark"] .theme-toggle .icon-moon { opacity: 0; transform: rotate(-90deg) scale(0.5); }
+
+    /* === HEADER CTA === */
+    .header-cta {
+      background: var(--btn-primary-bg);
+      color: var(--btn-primary-text);
+      padding: 11px 22px;
+      border-radius: 100px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: all 0.2s;
+      box-shadow: var(--shadow-md);
+      white-space: nowrap;
+    }
+    .header-cta:hover { transform: translateY(-1px); box-shadow: var(--shadow-lg); }
+
+    @media (max-width: 860px) { .header-nav { display: none; } }
+
+    /* === HERO === */
+    .hero {
+      padding: 160px 0 100px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--card-bg);
+      color: var(--primary-dark);
+      padding: 8px 16px;
+      border-radius: 100px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border);
+    }
+    [data-theme="dark"] .badge { color: var(--primary); }
+    .badge-dot {
+      width: 8px; height: 8px;
+      background: var(--success);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+      box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+    }
+
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      font-weight: 700;
+      margin-bottom: 24px;
+      color: var(--text);
+    }
+    h1 .gradient-text {
+      background: var(--gradient-2);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      position: relative;
+      display: inline-block;
+    }
+    h1 .gradient-text::after {
+      content: '';
+      position: absolute;
+      bottom: 4px; left: 0; right: 0;
+      height: 8px;
+      background: var(--accent-light);
+      z-index: -1;
+      border-radius: 4px;
+      opacity: 0.6;
+    }
+
+    .hero-sub {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      margin-bottom: 36px;
+      max-width: 540px;
+      line-height: 1.65;
+    }
+
+    .hero-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 40px;
+    }
+    .hero-feature {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--text);
+      background: var(--card-bg);
+      padding: 8px 14px;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .hero-feature:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+    .check-icon {
+      width: 18px; height: 18px;
+      background: var(--success);
+      color: white;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 0.65rem;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .trust-line {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+    .avatars { display: flex; }
+    .avatars span {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      border: 2px solid var(--bg);
+      margin-left: -8px;
+      display: grid;
+      place-items: center;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: white;
+    }
+    .avatars span:first-child { margin-left: 0; }
+    .avatars span:nth-child(1) { background: #6366f1; }
+    .avatars span:nth-child(2) { background: #ec4899; }
+    .avatars span:nth-child(3) { background: #f59e0b; }
+    .avatars span:nth-child(4) { background: #10b981; }
+
+    /* === FORM CARD === */
+    .form-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 40px;
+      box-shadow: var(--shadow-xl);
+      position: relative;
+      overflow: hidden;
+      transition: background-color 0.4s ease, border-color 0.4s ease;
+    }
+    .form-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 5px;
+      background: var(--gradient-2);
+    }
+    .form-card::after {
+      content: '';
+      position: absolute;
+      top: -50%; right: -50%;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(79, 70, 229, 0.08) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .form-header { position: relative; z-index: 1; }
+    .form-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+    .form-subtitle {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+    }
+
+    .form-group { margin-bottom: 18px; position: relative; z-index: 1; }
+    label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--text);
+      letter-spacing: 0.01em;
+    }
+    input, select {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      transition: all 0.2s;
+      background: var(--input-bg);
+      color: var(--text);
+    }
+    input::placeholder { color: var(--text-soft); }
+    input:focus, select:focus {
+      outline: none;
+      border-color: var(--primary);
+      background: var(--card-bg);
+      box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.15);
+    }
+    select {
+      appearance: none;
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3e%3cpath fill='%2364748b' d='M6 8.825L1.175 4 2.05 3.125 6 7.075 9.95 3.125 10.825 4z'/%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      padding-right: 40px;
+    }
+
+    .btn-primary {
+      width: 100%;
+      padding: 16px;
+      background: var(--btn-primary-bg);
+      color: var(--btn-primary-text);
+      border: none;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-top: 8px;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--gradient-2);
+      opacity: 0;
+      transition: opacity 0.3s;
+      z-index: -1;
+    }
+    .btn-primary:hover::before { opacity: 1; }
+    .btn-primary:hover { color: white; }
+    .btn-primary:active { transform: scale(0.985); }
+    .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    .form-note {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-align: center;
+      margin-top: 16px;
+      line-height: 1.5;
+    }
+
+    /* === SUCCESS STATE === */
+    .success-state {
+      display: none;
+      text-align: center;
+      padding: 24px 0;
+      animation: fadeInUp 0.5s ease;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .success-icon {
+      width: 72px; height: 72px;
+      background: var(--gradient-2);
+      color: white;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 2rem;
+      margin: 0 auto 20px;
+      box-shadow: 0 10px 30px rgba(79, 70, 229, 0.4);
+    }
+    .success-state h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+    .success-state p { color: var(--text-muted); font-size: 0.95rem; }
+
+    /* === TRUST BAR === */
+    .trust-bar {
+      padding: 60px 0 40px;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-soft);
+      transition: background-color 0.4s ease;
+    }
+    .trust-bar-inner {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+      text-align: center;
+    }
+    .stat-value {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      background: var(--gradient-2);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    @media (max-width: 860px) {
+      .trust-bar-inner { grid-template-columns: repeat(2, 1fr); gap: 28px; }
+    }
+
+    /* === SECTION TITLES === */
+    .section { padding: 100px 0; position: relative; }
+    .section-eyebrow {
+      text-align: center;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      text-align: center;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+    }
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      margin-bottom: 64px;
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+
+    /* === HOW IT WORKS === */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .step {
+      padding: 40px 32px;
+      border-radius: 20px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    .step::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--gradient-2);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s;
+    }
+    .step:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-xl);
+      border-color: transparent;
+    }
+    .step:hover::before { transform: scaleX(1); }
+
+    .step-number {
+      width: 52px; height: 52px;
+      background: var(--primary-light);
+      color: var(--primary);
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 24px;
+      transition: all 0.3s;
+    }
+    [data-theme="dark"] .step-number { color: #c7d2fe; }
+    .step:hover .step-number {
+      background: var(--gradient-2);
+      color: white;
+      transform: rotate(-5deg) scale(1.05);
+    }
+    .step h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.2rem;
+      margin-bottom: 12px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+    .step p { font-size: 0.94rem; color: var(--text-muted); line-height: 1.65; }
+
+    @media (max-width: 860px) {
+      .steps { grid-template-columns: 1fr; gap: 20px; }
+      .section { padding: 70px 0; }
+    }
+
+    /* === TESTIMONIALS === */
+    .testimonials-section {
+      background: var(--bg-soft);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      transition: background-color 0.4s ease;
+    }
+    .testimonials {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .testimonial {
+      background: var(--card-bg);
+      padding: 32px;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      transition: all 0.3s;
+      position: relative;
+    }
+    .testimonial:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+    .testimonial-quote {
+      font-size: 0.98rem;
+      line-height: 1.7;
+      color: var(--text);
+      margin-bottom: 24px;
+    }
+    .testimonial-quote::before {
+      content: '"';
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 3rem;
+      line-height: 0;
+      color: var(--primary);
+      opacity: 0.3;
+      display: block;
+      margin-bottom: 12px;
+    }
+    .testimonial-author { display: flex; align-items: center; gap: 12px; }
+    .testimonial-avatar {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: white;
+      font-weight: 700;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+    .testimonial-info strong { display: block; font-size: 0.92rem; font-weight: 600; }
+    .testimonial-info span { font-size: 0.82rem; color: var(--text-muted); }
+
+    @media (max-width: 860px) { .testimonials { grid-template-columns: 1fr; } }
+
+    /* === FAQ === */
+    .faq-list { max-width: 780px; margin: 0 auto; }
+    .faq-item {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      margin-bottom: 12px;
+      overflow: hidden;
+      transition: all 0.25s ease;
+    }
+    .faq-item:hover { border-color: var(--primary); }
+    .faq-question {
+      padding: 22px 26px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      font-size: 0.98rem;
+      user-select: none;
+      color: var(--text);
+    }
+    .faq-toggle {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: var(--primary-light);
+      color: var(--primary);
+      display: grid;
+      place-items: center;
+      font-size: 1.1rem;
+      font-weight: 700;
+      transition: transform 0.3s, background 0.3s;
+      flex-shrink: 0;
+      margin-left: 16px;
+    }
+    [data-theme="dark"] .faq-toggle { color: #c7d2fe; }
+    .faq-item.open .faq-toggle { transform: rotate(45deg); background: var(--gradient-2); color: white; }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+      padding: 0 26px;
+      color: var(--text-muted);
+      font-size: 0.94rem;
+      line-height: 1.7;
+    }
+    .faq-item.open .faq-answer {
+      max-height: 400px;
+      padding: 0 26px 22px;
+    }
+
+    /* === FINAL CTA === */
+    .final-cta {
+      padding: 100px 0;
+      background: var(--gradient-2);
+      color: white;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .final-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle at 20% 30%, rgba(255,255,255,0.15) 0%, transparent 40%),
+                        radial-gradient(circle at 80% 70%, rgba(255,255,255,0.1) 0%, transparent 40%);
+      pointer-events: none;
+    }
+    .final-cta-inner { position: relative; z-index: 1; }
+    .final-cta h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+    }
+    .final-cta p {
+      font-size: 1.1rem;
+      opacity: 0.92;
+      margin-bottom: 36px;
+      max-width: 580px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+    .btn-white {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: white;
+      color: var(--primary);
+      padding: 16px 36px;
+      border-radius: 100px;
+      font-size: 1rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.3s;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+    .btn-white:hover { transform: translateY(-3px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+
+    /* === FOOTER === */
+    footer {
+      padding: 40px 0;
+      text-align: center;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      background: var(--bg-soft);
+      border-top: 1px solid var(--border);
+      transition: background-color 0.4s ease;
+    }
+    footer a { color: var(--primary); text-decoration: none; font-weight: 600; }
+    footer a:hover { text-decoration: underline; }
+    .footer-inner { display: flex; flex-direction: column; gap: 12px; align-items: center; }
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .footer-links a { color: var(--text-muted); font-weight: 500; font-size: 0.85rem; }
+
+    /* === SCROLL REVEAL === */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 1024px) { .hero-grid { gap: 50px; } }
+
+    @media (max-width: 860px) {
+      .hero { padding: 130px 0 60px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 50px; }
+      .form-card { padding: 32px 24px; }
+      .header-inner { height: 64px; }
+      .logo { font-size: 1.2rem; }
+      .logo-mark { width: 32px; height: 32px; }
+      h1 { font-size: 2.1rem; }
+      .hero-sub { font-size: 1rem; }
+      .final-cta { padding: 70px 0; }
+      .trust-bar { padding: 40px 0 30px; }
+      .stat-value { font-size: 1.9rem; }
+    }
+
+    @media (max-width: 480px) {
+      .container { padding: 0 20px; }
+      h1 { font-size: 1.85rem; }
+      .hero-features { flex-direction: column; align-items: flex-start; }
+      .header-cta { padding: 9px 16px; font-size: 0.82rem; }
+      .btn-white { padding: 14px 28px; font-size: 0.92rem; }
+      .theme-toggle { width: 38px; height: 38px; }
+      .header-right { gap: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ANIMATED BACKGROUND ORBS -->
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+
+  <!-- HEADER -->
+  <header id="header">
+    <div class="container header-inner">
+      <a href="#" class="logo">
+        <span class="logo-mark">E</span>
+        EduFinder
+      </a>
+      <div class="header-right">
+        <nav class="header-nav">
+          <a href="#how">How it works</a>
+          <a href="#reviews">Reviews</a>
+          <a href="#faq">FAQ</a>
+        </nav>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme" title="Toggle theme">
+          <!-- Moon icon (shown in light mode) -->
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+          <!-- Sun icon (shown in dark mode) -->
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
+        <a href="#signup" class="header-cta">Join Waitlist</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="reveal">
+        <div class="badge">
+          <span class="badge-dot"></span>
+          Launching soon in Tampa Bay
+        </div>
+        <h1>Find the <span class="gradient-text">right IT training</span> — without the guesswork.</h1>
+        <p class="hero-sub">
+          Compare local coding bootcamps, cybersecurity programs, and IT certification courses side-by-side. Verified providers. Transparent pricing. Trustworthy reviews — all in one place.
+        </p>
+        <div class="hero-features">
+          <div class="hero-feature"><span class="check-icon">✓</span> Verified providers</div>
+          <div class="hero-feature"><span class="check-icon">✓</span> Real pricing</div>
+          <div class="hero-feature"><span class="check-icon">✓</span> Trusted reviews</div>
+          <div class="hero-feature"><span class="check-icon">✓</span> Location-based</div>
+        </div>
+        <div class="trust-line">
+          <div class="avatars">
+            <span>A</span><span>M</span><span>J</span><span>+</span>
+          </div>
+          <span>Join 200+ learners already on the waitlist</span>
+        </div>
+      </div>
+
+      <!-- FORM -->
+      <div class="form-card reveal" id="signup">
+        <div id="form-view">
+          <div class="form-header">
+            <h2 class="form-title">Get early access</h2>
+            <p class="form-subtitle">Be first to know when EduFinder launches in Tampa Bay.</p>
+          </div>
+
+          <form id="waitlist-form" novalidate>
+            <div class="form-group">
+              <label for="name">Your name</label>
+              <input type="text" id="name" name="name" placeholder="Jane Doe" required autocomplete="name">
+            </div>
+            <div class="form-group">
+              <label for="email">Email address</label>
+              <input type="email" id="email" name="email" placeholder="jane@example.com" required autocomplete="email">
+            </div>
+            <div class="form-group">
+              <label for="interest">What are you interested in?</label>
+              <select id="interest" name="interest" required>
+                <option value="">Select one...</option>
+                <option value="programming">Programming / Software Development</option>
+                <option value="cybersecurity">Cybersecurity</option>
+                <option value="networking">Networking / IT Support</option>
+                <option value="cloud">Cloud / DevOps</option>
+                <option value="other">Other / Not sure yet</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="timeline">When are you looking to start?</label>
+              <select id="timeline" name="timeline" required>
+                <option value="">Select one...</option>
+                <option value="now">As soon as possible</option>
+                <option value="3months">Within 3 months</option>
+                <option value="6months">Within 6 months</option>
+                <option value="exploring">Just exploring for now</option>
+              </select>
+            </div>
+            <button type="submit" class="btn-primary" id="submit-btn">Join the Waitlist →</button>
+            <p class="form-note">🔒 No spam. We'll only email you when EduFinder launches in your area.</p>
+          </form>
+        </div>
+
+        <div class="success-state" id="success-view">
+          <div class="success-icon">✓</div>
+          <h3>You're on the list!</h3>
+          <p>Thanks for joining. We'll reach out as soon as EduFinder launches in Tampa Bay.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <section class="trust-bar">
+    <div class="container trust-bar-inner">
+      <div class="reveal">
+        <div class="stat-value">58,000+</div>
+        <div class="stat-label">Tech workers in Tampa Bay</div>
+      </div>
+      <div class="reveal">
+        <div class="stat-value">21%</div>
+        <div class="stat-label">Growth in cybersecurity jobs</div>
+      </div>
+      <div class="reveal">
+        <div class="stat-value">$108K</div>
+        <div class="stat-label">Average tech salary</div>
+      </div>
+      <div class="reveal">
+        <div class="stat-value">20–50</div>
+        <div class="stat-label">Training providers being onboarded</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section" id="how">
+    <div class="container">
+      <p class="section-eyebrow reveal">How it works</p>
+      <h2 class="section-title reveal">Everything you need to choose with confidence</h2>
+      <p class="section-subtitle reveal">One place to compare every IT training option in Tampa Bay — built around what actually matters to you.</p>
+
+      <div class="steps">
+        <div class="step reveal">
+          <div class="step-number">01</div>
+          <h3>Search local options</h3>
+          <p>Find coding bootcamps, cybersecurity programs, and certification courses near you — filtered by location, price, and format.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step-number">02</div>
+          <h3>Compare side-by-side</h3>
+          <p>See pricing, schedules, certifications, and delivery formats in one clear view. No more jumping between ten different websites.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step-number">03</div>
+          <h3>Choose with confidence</h3>
+          <p>Read verified reviews from real students and send inquiries directly to providers — no guesswork, no pressure.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section testimonials-section" id="reviews">
+    <div class="container">
+      <p class="section-eyebrow reveal">Early feedback</p>
+      <h2 class="section-title reveal">What Tampa learners are telling us</h2>
+      <p class="section-subtitle reveal">We've been talking to learners across Tampa Bay. Here's what they said.</p>
+
+      <div class="testimonials">
+        <div class="testimonial reveal">
+          <p class="testimonial-quote">I spent two weeks comparing bootcamps and still wasn't sure. Having everything in one place would have saved me so much time.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar" style="background: #6366f1;">MR</div>
+            <div class="testimonial-info">
+              <strong>Marcus R.</strong>
+              <span>Career switcher, Tampa</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial reveal">
+          <p class="testimonial-quote">The pricing is all over the place. Some schools hide fees until you call. I just want to see real numbers upfront.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar" style="background: #ec4899;">SP</div>
+            <div class="testimonial-info">
+              <strong>Sarah P.</strong>
+              <span>Cybersecurity student, St. Pete</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial reveal">
+          <p class="testimonial-quote">I trust reviews from actual students way more than a school's own marketing page. That alone would make me use this.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar" style="background: #f59e0b;">DK</div>
+            <div class="testimonial-info">
+              <strong>David K.</strong>
+              <span>IT support professional, Clearwater</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="container">
+      <p class="section-eyebrow reveal">FAQ</p>
+      <h2 class="section-title reveal">Frequently asked questions</h2>
+      <p class="section-subtitle reveal">Everything you need to know about EduFinder.</p>
+
+      <div class="faq-list">
+        <div class="faq-item reveal">
+          <div class="faq-question">What exactly is EduFinder?<span class="faq-toggle">+</span></div>
+          <div class="faq-answer">EduFinder is a comparison platform for local IT training in Tampa Bay. You can search coding bootcamps, cybersecurity programs, and certification courses, then compare them side-by-side by price, schedule, format, and reviews.</div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-question">When will it launch?<span class="faq-toggle">+</span></div>
+          <div class="faq-answer">We're launching in the Tampa Bay area soon. Join the waitlist and we'll email you the moment we go live — you'll get early access before the public.</div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-question">Is it free for learners?<span class="faq-toggle">+</span></div>
+          <div class="faq-answer">Yes. Searching and comparing providers is completely free for learners. Providers will have optional paid features (like premium profiles), but the core comparison experience will always be free.</div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-question">How do you verify providers and reviews?<span class="faq-toggle">+</span></div>
+          <div class="faq-answer">We verify provider licensing, credentials, and program information. Reviews come from confirmed enrolled students, and we have moderation in place to detect fake or manipulated reviews.</div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-question">Will you cover other types of training?<span class="faq-toggle">+</span></div>
+          <div class="faq-answer">Yes — eventually. We're starting with IT training because it's a fast-growing field in Tampa Bay. Over time, we'll expand to language schools, healthcare training, business programs, and more.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta">
+    <div class="container final-cta-inner">
+      <h2>Be first in line when we launch.</h2>
+      <p>Join the waitlist and get early access to Tampa Bay's first IT training comparison platform.</p>
+      <a href="#signup" class="btn-white">Join the Waitlist →</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-inner">
+      <div class="footer-links">
+        <a href="#how">How it works</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#faq">FAQ</a>
+        <a href="mailto:hello@edufinder.app">Contact</a>
+      </div>
+      <p>© 2026 EduFinder · Tampa Bay, FL · <a href="mailto:hello@edufinder.app">hello@edufinder.app</a></p>
+    </div>
+  </footer>
+
+  <!-- ============ SCRIPT ============ -->
+  <script>
+    // ============ THEME TOGGLE ============
+    (function() {
+      const THEME_KEY = 'edufinder-theme';
+      const html = document.documentElement;
+      const toggle = document.getElementById('theme-toggle');
+
+      // تشخیص تم اولیه:
+      // ۱. از localStorage اگر قبلاً انتخاب شده
+      // ۲. در غیر این صورت، از تنظیمات سیستم‌عامل کاربر
+      function getInitialTheme() {
+        const saved = localStorage.getItem(THEME_KEY);
+        if (saved === 'light' || saved === 'dark') return saved;
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+
+      // اعمال تم
+      function applyTheme(theme) {
+        html.setAttribute('data-theme', theme);
+        localStorage.setItem(THEME_KEY, theme);
+      }
+
+      // مقدار اولیه
+      const initial = getInitialTheme();
+      html.setAttribute('data-theme', initial);
+
+      // تغییر تم با کلیک
+      toggle.addEventListener('click', function() {
+        const current = html.getAttribute('data-theme');
+        const next = current === 'dark' ? 'light' : 'dark';
+        applyTheme(next);
+      });
+
+      // گوش دادن به تغییرات تم سیستم (فقط اگر کاربر انتخاب دستی نکرده باشد)
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+        if (!localStorage.getItem(THEME_KEY)) {
+          html.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+        }
+      });
+    })();
+
+    // ============ FORM HANDLING ============
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxbwkv34nGnIZfT6Y8OuqDlEfT5nW_NVLaG8voNbukCwglmvNbGrQgehE4efkrl1320/exec';
+
+    const form = document.getElementById('waitlist-form');
+    const formView = document.getElementById('form-view');
+    const successView = document.getElementById('success-view');
+    const submitBtn = document.getElementById('submit-btn');
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const interest = document.getElementById('interest').value;
+      const timeline = document.getElementById('timeline').value;
+
+      if (!name || !email || !interest || !timeline) {
+        alert('Please fill in all fields.');
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Submitting...';
+
+      const formData = new FormData();
+      formData.append('name', name);
+      formData.append('email', email);
+      formData.append('interest', interest);
+      formData.append('timeline', timeline);
+
+      try {
+        const response = await fetch(GOOGLE_SCRIPT_URL, { method: 'POST', body: formData });
+        const result = await response.json();
+
+        if (result.result === 'success') {
+          if (typeof gtag === 'function') gtag('event', 'conversion', { 'send_to': 'AW-XXXXXXXXX/XXXXXXXX' });
+          if (typeof fbq === 'function') fbq('track', 'Lead');
+
+          formView.style.display = 'none';
+          successView.style.display = 'block';
+        } else {
+          alert('Something went wrong. Please try again.');
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Join the Waitlist →';
+        }
+      } catch (error) {
+        console.error('Error!', error);
+        alert('Submission failed. Please check your connection and try again.');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Join the Waitlist →';
+      }
+    });
+
+    // ============ HEADER SCROLL EFFECT ============
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // ============ FAQ ACCORDION ============
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.querySelector('.faq-question').addEventListener('click', () => {
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+
+    // ============ SCROLL REVEAL ============
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
