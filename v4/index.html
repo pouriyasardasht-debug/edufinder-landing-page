@@ -1,0 +1,707 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EduFinder — Find the right IT training in Tampa Bay</title>
+<meta name="description" content="Compare trusted IT training options in Tampa Bay by price, schedule, format, certification, hands-on practice and reviews.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root, [data-theme="light"]{
+  --bg:#f7f8fc; --surface:rgba(255,255,255,.82); --surface-solid:#fff;
+  --ink:#0e1426; --muted:#64708a; --line:rgba(25,36,63,.10);
+  --brand:#635bff; --brand-2:#8c5cff; --cyan:#20c7ff; --mint:#24d6a5;
+  --soft:#eef0ff; --shadow:0 24px 70px rgba(37,45,75,.13);
+}
+[data-theme="dark"]{
+  --bg:#080b14; --surface:rgba(18,23,36,.78); --surface-solid:#121724;
+  --ink:#f6f8ff; --muted:#a1abc1; --line:rgba(255,255,255,.10);
+  --brand:#8178ff; --brand-2:#a36cff; --cyan:#26c9ff; --mint:#35dfb0;
+  --soft:#17162e; --shadow:0 26px 80px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; color:var(--ink); background:
+  radial-gradient(circle at 10% 5%, rgba(99,91,255,.15), transparent 27rem),
+  radial-gradient(circle at 88% 10%, rgba(32,199,255,.10), transparent 24rem),
+  var(--bg);
+  font-family:'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  transition:background .3s,color .3s;
+}
+body:before{
+  content:""; position:fixed; inset:0; pointer-events:none; opacity:.55;
+  background-image:linear-gradient(rgba(120,128,160,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(120,128,160,.05) 1px,transparent 1px);
+  background-size:36px 36px; mask-image:linear-gradient(to bottom,black,transparent 72%);
+}
+a{text-decoration:none;color:inherit}
+.wrap{width:min(1160px,calc(100% - 36px));margin:auto}
+
+/* NAV */
+.nav{
+  position:sticky; top:12px; z-index:20; margin-top:14px; height:66px; padding:0 10px 0 16px;
+  display:flex;align-items:center;justify-content:space-between; gap:18px;
+  background:var(--surface); backdrop-filter:blur(18px);
+  border:1px solid var(--line); border-radius:18px; box-shadow:0 10px 35px rgba(30,40,80,.07);
+}
+.logo{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:-.04em}
+.logo-mark{
+  width:35px;height:35px;border-radius:12px;display:grid;place-items:center;color:#fff;
+  background:linear-gradient(135deg,var(--brand),var(--brand-2));box-shadow:0 8px 22px rgba(99,91,255,.3)
+}
+.navlinks{display:flex;gap:26px;color:var(--muted);font-size:13px;font-weight:750}
+.navlinks a:hover{color:var(--ink)}
+.nav-actions{display:flex;gap:8px;align-items:center}
+.icon-btn,.navcta{
+  border:1px solid var(--line); background:var(--surface-solid); color:var(--ink);
+  border-radius:12px; height:38px; padding:0 12px; font-weight:800; cursor:pointer
+}
+.icon-btn{width:38px;padding:0;display:grid;place-items:center;transition:all .2s}
+.icon-btn:hover{border-color:var(--brand);color:var(--brand)}
+.navcta{display:inline-flex;align-items:center;transition:all .2s}
+.navcta:hover{border-color:var(--brand);color:var(--brand)}
+
+/* HERO */
+.hero{padding:82px 0 30px}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.eyebrow{
+  display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px;
+  background:var(--soft); color:var(--brand); font-size:12px; font-weight:850; border:1px solid var(--line)
+}
+.eyebrow .pulse{width:7px;height:7px;border-radius:50%;background:var(--mint);box-shadow:0 0 0 5px rgba(36,214,165,.12);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+h1{font-size:clamp(44px,6.5vw,76px);line-height:.98;letter-spacing:-.06em;margin:20px 0 22px;max-width:760px}
+.gradient{
+  background:linear-gradient(100deg,var(--brand),var(--brand-2) 48%,var(--cyan));
+  color:transparent;background-clip:text;-webkit-background-clip:text;
+}
+.hero p{color:var(--muted);font-size:17px;line-height:1.62;max-width:680px;margin:0 0 28px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:11px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  height:50px;padding:0 19px;border-radius:14px;border:1px solid var(--line);font-size:14px;font-weight:850;cursor:pointer;
+  font-family:inherit;
+}
+.primary{color:#fff;border-color:transparent;background:linear-gradient(135deg,var(--brand),var(--brand-2));box-shadow:0 14px 34px rgba(99,91,255,.26);transition:transform .2s}
+.primary:hover{transform:translateY(-1px)}
+.secondary{background:var(--surface-solid);color:var(--ink);transition:all .2s}
+.secondary:hover{border-color:var(--brand);color:var(--brand)}
+.micro{font-size:11px;color:var(--muted);margin-top:12px}
+
+/* PRODUCT SHELL (left) */
+.product-shell{
+  position:relative; padding:14px; border-radius:30px; overflow:visible;
+  background:linear-gradient(145deg,rgba(255,255,255,.72),rgba(255,255,255,.25));
+  border:1px solid var(--line); box-shadow:var(--shadow);
+}
+[data-theme="dark"] .product-shell{background:linear-gradient(145deg,rgba(22,29,46,.88),rgba(13,17,28,.65))}
+.product-shell:after{
+  content:"";position:absolute;right:-18px;top:32px;width:120px;height:120px;border-radius:50%;
+  background:radial-gradient(circle,rgba(32,199,255,.35),transparent 65%);filter:blur(10px);z-index:-1
+}
+.browser{overflow:hidden;border-radius:22px;border:1px solid var(--line);background:var(--surface-solid)}
+.browser-top{height:48px;display:flex;align-items:center;gap:7px;padding:0 15px;border-bottom:1px solid var(--line)}
+.orb{width:8px;height:8px;border-radius:50%;background:#aab2c0}
+.address{margin-left:9px;font-size:10px;color:var(--muted);padding:6px 10px;border-radius:8px;background:var(--soft);flex:1}
+.search-panel{padding:22px}
+.search-title{font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:850;margin-bottom:8px}
+.searchbox{
+  height:52px;border:1px solid var(--line);border-radius:15px;background:var(--bg);
+  display:flex;align-items:center;padding:0 14px;color:var(--muted);font-size:13px;
+}
+.searchbox strong{color:var(--ink);margin-left:5px}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 18px}
+.chip{
+  padding:8px 10px;border:1px solid var(--line);border-radius:999px;background:var(--surface-solid);
+  font-size:10px;font-weight:800;color:var(--ink)
+}
+.result{
+  display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center;
+  background:var(--surface-solid);border:1px solid var(--line);border-radius:16px;padding:14px;margin-top:9px
+}
+.result h4{margin:0;font-size:13px;letter-spacing:-.01em}.result p{margin:4px 0 0;color:var(--muted);font-size:10px}
+.tag{font-size:10px;color:var(--mint);background:rgba(36,214,165,.11);padding:6px 8px;border-radius:999px;font-weight:900}
+.rating{font-size:10px;color:#f2a900;font-weight:900}
+
+/* SIGNUP FORM (top-right) */
+.signup-card{
+  position:relative; padding:28px;
+  background:var(--surface); backdrop-filter:blur(20px);
+  border:1px solid var(--line); border-radius:24px;
+  box-shadow:var(--shadow);
+}
+.signup-card::before{
+  content:""; position:absolute; top:0; left:24px; right:24px; height:4px;
+  background:linear-gradient(90deg,var(--brand),var(--brand-2),var(--cyan));
+  border-radius:0 0 4px 4px;
+}
+.signup-head{margin-bottom:20px}
+.signup-head .badge{
+  display:inline-flex; align-items:center; gap:6px;
+  padding:5px 10px; border-radius:999px;
+  background:rgba(36,214,165,.12); color:var(--mint);
+  font-size:10px; font-weight:900; letter-spacing:.05em; text-transform:uppercase;
+  margin-bottom:10px;
+}
+.signup-head .badge-dot{width:6px;height:6px;border-radius:50%;background:var(--mint);animation:pulse 2s infinite}
+.signup-head h3{font-size:20px; margin:0 0 6px; letter-spacing:-.02em}
+.signup-head p{font-size:12px; color:var(--muted); margin:0; line-height:1.5}
+.field{margin-bottom:12px}
+.field label{display:block;font-size:11px;font-weight:800;margin:0 0 6px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.field input,.field select{
+  width:100%;height:44px;border:1px solid var(--line);border-radius:11px;padding:0 12px;
+  font:inherit;background:var(--surface-solid);color:var(--ink);font-size:14px;
+  transition:all .2s;
+}
+.field input::placeholder{color:var(--muted);opacity:.6}
+.field input:focus,.field select:focus{
+  outline:none;border-color:var(--brand);
+  box-shadow:0 0 0 3px rgba(99,91,255,.15);
+}
+.field select{
+  appearance:none;
+  background-image:url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3e%3cpath fill='%2364708a' d='M6 8.825L1.175 4 2.05 3.125 6 7.075 9.95 3.125 10.825 4z'/%3e%3c/svg%3e");
+  background-repeat:no-repeat;background-position:right 14px center;padding-right:36px;
+}
+.submit{
+  width:100%;height:50px;border:0;border-radius:12px;font-family:inherit;
+  color:#fff;background:linear-gradient(135deg,var(--brand),var(--brand-2));
+  font-size:14px;font-weight:850;cursor:pointer;margin-top:6px;
+  box-shadow:0 12px 28px rgba(99,91,255,.3);transition:transform .2s;
+}
+.submit:hover{transform:translateY(-1px)}
+.submit:disabled{opacity:.7;cursor:not-allowed;transform:none}
+.fine{font-size:10px;color:var(--muted);line-height:1.45;margin-top:10px;text-align:center}
+
+.success{
+  display:none;text-align:center;padding:30px 10px;
+  animation:appear .5s ease;
+}
+@keyframes appear{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.success-mark{
+  width:64px;height:64px;border-radius:50%;
+  background:linear-gradient(135deg,var(--mint),var(--cyan));
+  display:grid;place-items:center;color:#fff;font-size:28px;font-weight:900;
+  margin:0 auto 16px;box-shadow:0 12px 30px rgba(36,214,165,.35);
+}
+.success h3{margin:0 0 8px;font-size:20px}
+.success p{margin:0;color:var(--muted);font-size:13px;line-height:1.5}
+
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:48px 0 84px}
+.stat{padding:20px;border:1px solid var(--line);border-radius:18px;background:var(--surface);backdrop-filter:blur(12px)}
+.num{font-size:27px;font-weight:900;letter-spacing:-.04em;background:linear-gradient(135deg,var(--brand),var(--brand-2),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+.label{font-size:12px;color:var(--muted);margin-top:4px;line-height:1.45}
+
+/* SECTIONS */
+.section{padding:78px 0}
+.section.alt{background:rgba(120,130,170,.035);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.kicker{font-size:12px;text-transform:uppercase;letter-spacing:.16em;color:var(--brand);font-weight:900}
+h2{font-size:clamp(30px,4.5vw,42px);line-height:1.05;letter-spacing:-.045em;max-width:760px;margin:12px 0 14px}
+.section-sub{color:var(--muted);font-size:16px;line-height:1.68;max-width:700px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:32px}
+.card{padding:24px;background:var(--surface);border:1px solid var(--line);border-radius:20px;backdrop-filter:blur(10px);transition:all .3s}
+.card:hover{transform:translateY(-4px);border-color:var(--brand)}
+.icon{
+  width:42px;height:42px;border-radius:13px;background:linear-gradient(135deg,var(--soft),transparent);
+  display:grid;place-items:center;margin-bottom:15px;font-size:18px;color:var(--brand)
+}
+.card h3{font-size:17px;margin:0 0 8px;letter-spacing:-.02em}.card p{margin:0;color:var(--muted);font-size:13px;line-height:1.62}
+
+/* COMPARE */
+.compare{display:grid;grid-template-columns:.88fr 1.12fr;gap:40px;align-items:center}
+.comparison-card{border:1px solid var(--line);border-radius:22px;overflow:hidden;background:var(--surface);box-shadow:var(--shadow)}
+table{width:100%;border-collapse:collapse}
+th,td{padding:16px 15px;border-bottom:1px solid var(--line);font-size:12px;text-align:left}
+th{background:rgba(120,130,170,.045);font-size:11px;color:var(--muted);font-weight:850}
+.check{color:var(--mint);font-weight:900}.muted{color:var(--muted)}
+
+/* STEPS */
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:32px}
+.step{padding:19px 16px;border:1px solid var(--line);background:var(--surface);border-radius:18px;transition:all .3s}
+.step:hover{border-color:var(--brand);transform:translateY(-2px)}
+.step b{display:block;color:var(--brand);font-size:11px;margin-bottom:8px}.step strong{font-size:15px}
+
+/* PERSONAS */
+.personas{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:32px}
+.quote{font-size:14px;line-height:1.62;margin:0 0 12px}.who{font-size:11px;color:var(--brand);font-weight:850}
+
+/* TESTIMONIALS */
+.testimonials{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}
+.tcard{
+  padding:22px; background:var(--surface); border:1px solid var(--line);
+  border-radius:18px; backdrop-filter:blur(10px);
+  display:flex;flex-direction:column;gap:14px;
+  transition:all .3s; position:relative; overflow:hidden;
+}
+.tcard::before{
+  content:'"'; position:absolute; top:6px; right:18px;
+  font-size:64px; line-height:1; color:var(--brand); opacity:.08; font-weight:900;
+}
+.tcard:hover{transform:translateY(-4px);border-color:var(--brand);box-shadow:0 20px 40px rgba(99,91,255,.15)}
+.tcard-stars{display:flex;gap:2px;color:#f2a900;font-size:13px;letter-spacing:1px}
+.tcard-quote{font-size:13px;line-height:1.7;color:var(--ink);margin:0;flex:1;position:relative;z-index:1}
+.tcard-quote em{color:var(--brand);font-style:italic;font-weight:600}
+.tcard-author{display:flex;align-items:center;gap:10px;padding-top:12px;border-top:1px solid var(--line)}
+.tcard-avatar{
+  width:36px;height:36px;border-radius:50%;
+  display:grid;place-items:center;color:#fff;font-weight:800;font-size:12px;flex-shrink:0;
+}
+.tcard-info strong{display:block;font-size:12px;font-weight:800;line-height:1.2}
+.tcard-info span{font-size:10px;color:var(--muted);line-height:1.2}
+.av-1{background:linear-gradient(135deg,#6366f1,#8b5cf6)}
+.av-2{background:linear-gradient(135deg,#ec4899,#f43f5e)}
+.av-3{background:linear-gradient(135deg,#f59e0b,#f97316)}
+.av-4{background:linear-gradient(135deg,#10b981,#14b8a6)}
+.av-5{background:linear-gradient(135deg,#06b6d4,#0ea5e9)}
+.av-6{background:linear-gradient(135deg,#8b5cf6,#a855f7)}
+.av-7{background:linear-gradient(135deg,#ef4444,#dc2626)}
+.av-8{background:linear-gradient(135deg,#14b8a6,#22d3ee)}
+
+/* FAQ */
+.faq-list{max-width:780px;margin:40px auto 0}
+.faq-item{border-bottom:1px solid var(--line);padding:6px 0}
+.faq-item:first-child{border-top:1px solid var(--line)}
+.faq-q{
+  padding:22px 8px;display:flex;justify-content:space-between;align-items:center;
+  cursor:pointer;font-size:15px;font-weight:700;color:var(--ink);user-select:none;gap:20px;
+  transition:color .2s;
+}
+.faq-q:hover{color:var(--brand)}
+.faq-sign{
+  width:28px;height:28px;border-radius:50%;
+  background:var(--surface-solid);border:1px solid var(--line);
+  display:grid;place-items:center;font-size:16px;font-weight:700;
+  color:var(--brand);transition:all .3s;flex-shrink:0;
+}
+.faq-item.open .faq-sign{background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;transform:rotate(180deg);border-color:transparent}
+.faq-a{
+  max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease;
+  padding:0 8px;color:var(--muted);font-size:13px;line-height:1.75;
+}
+.faq-item.open .faq-a{max-height:400px;padding:0 8px 22px}
+
+/* FOOTER */
+footer{padding:38px 0 55px;color:var(--muted);font-size:11px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+
+/* RESPONSIVE */
+@media(max-width:930px){
+  .hero-grid,.compare{grid-template-columns:1fr;gap:40px}
+  .product-shell{max-width:720px;order:2}
+  .signup-card{order:1}
+  .cards,.personas,.testimonials{grid-template-columns:1fr}
+}
+@media(max-width:700px){
+  .wrap{width:min(100% - 24px,1160px)}.navlinks{display:none}.hero{padding-top:54px}
+  h1{font-size:44px}.stats{grid-template-columns:1fr;margin-bottom:55px}
+  .steps{grid-template-columns:1fr 1fr}
+  .signup-card{padding:22px}
+  footer{flex-direction:column;align-items:center;text-align:center}
+}
+@media(max-width:430px){
+  h1{font-size:38px}.steps{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<header class="wrap nav">
+  <a class="logo" href="#"><span class="logo-mark">E</span><span>EduFinder</span></a>
+  <nav class="navlinks">
+    <a href="#problem">Why EduFinder</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#faq">FAQ</a>
+  </nav>
+  <div class="nav-actions">
+    <button class="icon-btn" id="themeToggle" aria-label="Toggle theme">☀</button>
+    <a class="navcta" href="#join">Join pilot</a>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap hero-grid">
+
+    <!-- LEFT: TEXT + PRODUCT MOCK -->
+    <div>
+      <span class="eyebrow"><span class="pulse"></span> Tampa Bay pilot · Professional IT training</span>
+      <h1>Compare IT training <span class="gradient">like never before.</span></h1>
+      <p>Stop bouncing between course websites. Discover and compare local IT training by the things that actually matter: price, schedule, format, certification, hands-on practice and reviews.</p>
+      <div class="hero-actions">
+        <a class="btn primary" href="#join">Join the pilot <span>→</span></a>
+        <a class="btn secondary" href="#compare">See the difference</a>
+      </div>
+      <div class="micro">Early-access validation pilot · No payment required</div>
+    </div>
+
+    <!-- RIGHT: SIGNUP FORM (TOP-RIGHT) -->
+    <div class="signup-card" id="join">
+      <div id="form-view">
+        <div class="signup-head">
+          <span class="badge"><span class="badge-dot"></span> Free early access</span>
+          <h3>Get notified when we launch</h3>
+          <p>Join the Tampa Bay pilot and help shape the platform.</p>
+        </div>
+
+        <form id="waitlistForm" novalidate>
+          <div class="field">
+            <label for="name">Your name</label>
+            <input id="name" name="name" required placeholder="Alex Johnson" autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required placeholder="alex@email.com" autocomplete="email">
+          </div>
+          <div class="field">
+            <label for="interest">What are you looking for?</label>
+            <select id="interest" name="interest" required>
+              <option value="">Select one</option>
+              <option value="Programming / software development">Programming / software development</option>
+              <option value="Cybersecurity">Cybersecurity</option>
+              <option value="Networking / IT support">Networking / IT support</option>
+              <option value="Cloud / DevOps">Cloud / DevOps</option>
+              <option value="Not sure yet">Not sure yet</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="timeline">When do you plan to start?</label>
+            <select id="timeline" name="timeline" required>
+              <option value="">Select one</option>
+              <option value="Within 30 days">Within 30 days</option>
+              <option value="1-3 months">1–3 months</option>
+              <option value="3-6 months">3–6 months</option>
+              <option value="Just exploring">Just exploring</option>
+            </select>
+          </div>
+          <button class="submit" type="submit" id="submitBtn">Join the Tampa pilot →</button>
+          <div class="fine">🔒 Your details are used only for pilot updates. No spam.</div>
+        </form>
+      </div>
+
+      <div class="success" id="success">
+        <div class="success-mark">✓</div>
+        <h3>You're on the list.</h3>
+        <p>Thanks for joining — we'll be in touch soon.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- PRODUCT MOCK BELOW -->
+  <div class="wrap" style="margin-top:60px">
+    <div class="product-shell">
+      <div class="browser">
+        <div class="browser-top">
+          <span class="orb"></span><span class="orb"></span><span class="orb"></span>
+          <div class="address">edufinder · tampa bay · cybersecurity</div>
+        </div>
+        <div class="search-panel">
+          <div class="search-title">Find training that fits</div>
+          <div class="searchbox">⌕ <strong>Cybersecurity programs</strong>&nbsp; near Tampa</div>
+          <div class="filters">
+            <span class="chip">Within 15 miles</span><span class="chip">Under $2,500</span><span class="chip">Evenings</span><span class="chip">Hands-on</span>
+          </div>
+          <div class="result">
+            <div><h4>Cybersecurity Bootcamp</h4><p>Hybrid · 12 weeks · Security+ · <span class="rating">★ 4.8</span></p></div>
+            <span class="tag">✓ Verified</span>
+          </div>
+          <div class="result">
+            <div><h4>Security+ Certification Prep</h4><p>In-person · Evening · 8 weeks · <span class="rating">★ 4.7</span></p></div>
+            <span class="tag">✓ Verified</span>
+          </div>
+          <div class="result">
+            <div><h4>IT Security Fundamentals</h4><p>Online + Tampa lab · Beginner · <span class="rating">★ 4.6</span></p></div>
+            <span class="tag">✓ Verified</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap stats">
+    <div class="stat"><div class="num">3.42M</div><div class="label">Tampa Bay MSA population · 2025</div></div>
+    <div class="stat"><div class="num">20–50</div><div class="label">providers targeted for the pilot</div></div>
+    <div class="stat"><div class="num">2,500</div><div class="label">Year-1 learner registration target</div></div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="section" id="problem">
+  <div class="wrap">
+    <div class="kicker">The real problem</div>
+    <h2>Finding a course is easy. Knowing which one to choose isn't.</h2>
+    <p class="section-sub">Learners can find options, but the decision is fragmented. EduFinder is designed around the comparison moment — when someone is close to choosing.</p>
+    <div class="cards">
+      <article class="card"><div class="icon">⌕</div><h3>Too many tabs</h3><p>Price, location, schedule and course details live across different websites.</p></article>
+      <article class="card"><div class="icon">⇄</div><h3>No common language</h3><p>Programs describe themselves differently, making side-by-side comparison frustrating.</p></article>
+      <article class="card"><div class="icon">✓</div><h3>Trust comes last</h3><p>Verification and credible reviews should be visible before a learner submits an inquiry.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARE -->
+<section class="section alt" id="compare">
+  <div class="wrap compare">
+    <div>
+      <div class="kicker">The EduFinder layer</div>
+      <h2>Google finds information. EduFinder helps you compare and choose.</h2>
+      <p class="section-sub">A focused decision experience for local professional IT training — built around high-intent questions instead of generic search results.</p>
+      <a class="btn primary" href="#join" style="margin-top:16px">Test the concept →</a>
+    </div>
+    <div class="comparison-card">
+      <table>
+        <thead><tr><th>What matters</th><th>Typical search</th><th>EduFinder</th></tr></thead>
+        <tbody>
+          <tr><td>Local options</td><td class="muted">Scattered</td><td class="check">✓ Structured</td></tr>
+          <tr><td>Price & duration</td><td class="muted">Varies</td><td class="check">✓ Comparable</td></tr>
+          <tr><td>Schedule & format</td><td class="muted">Manual</td><td class="check">✓ Filterable</td></tr>
+          <tr><td>Provider verification</td><td class="muted">Variable</td><td class="check">✓ Visible</td></tr>
+          <tr><td>Reviews</td><td class="muted">General</td><td class="check">✓ Structured</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section">
+  <div class="wrap">
+    <div class="kicker">How it works</div>
+    <h2>A five-step path from "search" to "inquire."</h2>
+    <p class="section-sub">The landing page is intentionally designed to test whether learners want this comparison journey before the full marketplace is built.</p>
+    <div class="steps">
+      <div class="step"><b>01</b><strong>Search</strong></div>
+      <div class="step"><b>02</b><strong>Filter</strong></div>
+      <div class="step"><b>03</b><strong>Compare</strong></div>
+      <div class="step"><b>04</b><strong>Review</strong></div>
+      <div class="step"><b>05</b><strong>Inquire</strong></div>
+    </div>
+
+    <div style="margin-top:72px" class="kicker">Made for real learner intent</div>
+    <h2>Three situations. One clearer decision.</h2>
+    <div class="personas">
+      <article class="card"><h3>"I want to switch into tech."</h3><p class="quote">Show me beginner-friendly programs, realistic duration, career relevance and certification paths.</p><span class="who">Career switcher</span></article>
+      <article class="card"><h3>"I need Security+."</h3><p class="quote">Help me compare price, schedule, location, hands-on practice and instructional quality.</p><span class="who">Certification seeker</span></article>
+      <article class="card"><h3>"I already work in IT."</h3><p class="quote">Find a flexible path into networking, cybersecurity, software or cloud without breaking my schedule.</p><span class="who">Working IT professional</span></article>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS (NEW - varied voices) -->
+<section class="section alt" id="reviews">
+  <div class="wrap">
+    <div class="kicker">Early voices</div>
+    <h2>What Tampa learners are already telling us.</h2>
+    <p class="section-sub">We've been talking to career switchers, IT professionals, and certification seekers across Tampa Bay. Here's what they said.</p>
+
+    <div class="testimonials">
+      <div class="tcard">
+        <div class="tcard-stars">★★★★★</div>
+        <p class="tcard-quote">I spent <em>two weeks</em> comparing bootcamps and still wasn't sure. Having everything in one place would have saved me so much time.</p>
+        <div class="tcard-author">
+          <div class="tcard-avatar av-1">MR</div>
+          <div class="tcard-info"><strong>Marcus R.</strong><span>Career switcher · Tampa</span></div>
+        </div>
+      </div>
+
+      <div class="tcard">
+        <div class="tcard-stars">★★★★★</div>
+        <p class="tcard-quote">The pricing is all over the place. Some schools hide fees until you call. I just want to see <em>real numbers upfront.</em></p>
+        <div class="tcard-author">
+          <div class="tcard-avatar av-2">SP</div>
+          <div class="tcard-info"><strong>Sarah P.</strong><span>Cybersecurity student · St. Pete</span></div>
+        </div>
+      </div>
+
+      <div class="tcard">
+        <div class="tcard-stars">★★★★★</div>
+        <p class="tcard-quote">I trust reviews from <em>actual students</em> way more than a school's marketing page. That alone would make me use this.</p>
+        <div class="tcard-author">
+          <div class="tcard-avatar av-3">DK</div>
+          <div class="tcard-info"><strong>David K.</strong><span>IT support · Clearwater</span></div>
+        </div>
+      </div>
+
+      <div class="tcard">
+        <div class="tcard-stars">★★★★★</div>
+        <p class="tcard-quote">I already have a full-time job. I need to know <em>which programs actually fit</em> around my schedule — not just who has the best website.</p>
+        <div class="tcard-author">
+          <div class="tcard-avatar av-4">JL</div>
+          <div class="tcard-info"><strong>Jasmine L.</strong><span>Working IT professional · Tampa</span></div>
+        </div>
+      </div>
+
+      <div class="tcard">
+        <div class="tcard-stars">★★★★★</div>
+        <p class="tcard-quote">I didn't even know half of these programs existed. <em>Half the battle</em> is just knowing what's out there.</p>
+        <div class="tcard-author">
+          <div class="tcard-avatar av-5">AM</div>
+          <div class="tcard-info"><strong>Ahmed M.</strong><span>Career switcher · Brandon</span></div>
+        </div>
+      </div>
+
+      <div class="tcard">
+        <div class="tcard-stars">★★★★★</div>
+        <p class="tcard-quote">I called four schools and got four different answers on certification. A <em>side-by-side comparison</em> would have ended that frustration instantly.</p>
+        <div class="tcard-author">
+          <div class="tcard-avatar av-6">RC</div>
+          <div class="tcard-info"><strong>Rachel C.</strong><span>Certification seeker · Tampa</span></div>
+        </div>
+      </div>
+
+      <div class="tcard">
+        <div class="tcard-stars">★★★★★</div>
+        <p class="tcard-quote">It's not about finding the cheapest option. It's about finding the one that <em>actually gets me hired.</em></p>
+        <div class="tcard-author">
+          <div class="tcard-avatar av-7">TB</div>
+          <div class="tcard-info"><strong>Tom B.</strong><span>Career switcher · St. Pete</span></div>
+        </div>
+      </div>
+
+      <div class="tcard">
+        <div class="tcard-stars">★★★★★</div>
+        <p class="tcard-quote">I compared six cybersecurity programs. Not one of them had <em>the same pricing structure.</em> It's exhausting.</p>
+        <div class="tcard-author">
+          <div class="tcard-avatar av-8">NP</div>
+          <div class="tcard-info"><strong>Nina P.</strong><span>Security analyst · Tampa</span></div>
+        </div>
+      </div>
+
+      <div class="tcard">
+        <div class="tcard-stars">★★★★★</div>
+        <p class="tcard-quote">If this had existed last year, I would have saved <em>thousands of dollars</em> and months of trial and error.</p>
+        <div class="tcard-author">
+          <div class="tcard-avatar av-1">KG</div>
+          <div class="tcard-info"><strong>Kevin G.</strong><span>Cloud engineer · Largo</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+  <div class="wrap">
+    <div class="kicker">FAQ</div>
+    <h2>Questions, answered.</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">What exactly is EduFinder?<span class="faq-sign">+</span></div>
+        <div class="faq-a">EduFinder is a comparison platform for local IT training in Tampa Bay. You search coding bootcamps, cybersecurity programs, and certification courses, then compare them side by side by price, schedule, format, and reviews.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">When does it launch?<span class="faq-sign">+</span></div>
+        <div class="faq-a">We're launching in the Tampa Bay area soon. Join the pilot at the top of this page and we'll email you the moment we go live — you'll get early access before the public.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Is it free for learners?<span class="faq-sign">+</span></div>
+        <div class="faq-a">Yes. Searching and comparing providers is completely free for learners. Providers will have optional paid features, but the core comparison experience is always free.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How do you verify providers and reviews?<span class="faq-sign">+</span></div>
+        <div class="faq-a">We verify provider licensing, credentials, and program information. Reviews come from confirmed enrolled students, with moderation in place to detect fake or manipulated reviews.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Will you cover other types of training?<span class="faq-sign">+</span></div>
+        <div class="faq-a">Yes — eventually. We're starting with IT training because it's a fast-growing field in Tampa Bay. Over time, we'll expand to language schools, healthcare training, business programs, and more.</div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="wrap">
+  <span>© 2026 EduFinder · Tampa Bay, FL</span>
+  <span>Find. Compare. Choose.</span>
+</footer>
+
+<script>
+/* ===== THEME TOGGLE ===== */
+(function(){
+  const KEY = 'edufinder-theme-v8';
+  const html = document.documentElement;
+  const toggle = document.getElementById('themeToggle');
+
+  function getInitial(){
+    const saved = localStorage.getItem(KEY);
+    if (saved === 'light' || saved === 'dark') return saved;
+    return 'dark';
+  }
+  function syncIcon(theme){
+    toggle.textContent = theme === 'dark' ? '☀' : '☾';
+  }
+  const initial = getInitial();
+  html.setAttribute('data-theme', initial);
+  syncIcon(initial);
+
+  toggle.addEventListener('click', () => {
+    const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem(KEY, next);
+    syncIcon(next);
+  });
+})();
+
+/* ===== GOOGLE SHEETS CONNECTION ===== */
+const SHEETS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxbwkv34nGnIZfT6Y8OuqDlEfT5nW_NVLaG8voNbukCwglmvNbGrQgehE4efkrl1320/exec';
+
+const form = document.getElementById('waitlistForm');
+const formView = document.getElementById('form-view');
+const success = document.getElementById('success');
+const submitBtn = document.getElementById('submitBtn');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const interest = document.getElementById('interest').value;
+  const timeline = document.getElementById('timeline').value;
+
+  if (!name || !email || !interest || !timeline) {
+    alert('Please fill in all fields.');
+    return;
+  }
+
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Submitting...';
+
+  const fd = new FormData();
+  fd.append('name', name);
+  fd.append('email', email);
+  fd.append('interest', interest);
+  fd.append('timeline', timeline);
+
+  try {
+    const res = await fetch(SHEETS_ENDPOINT, { method: 'POST', body: fd });
+    const out = await res.json();
+
+    if (out.result === 'success') {
+      if (typeof gtag === 'function') gtag('event', 'conversion', { 'send_to': 'AW-XXXXXXXXX/XXXXXXXX' });
+      if (typeof fbq === 'function') fbq('track', 'Lead');
+      formView.style.display = 'none';
+      success.style.display = 'block';
+    } else {
+      alert('Something went wrong. Please try again.');
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Join the Tampa pilot →';
+    }
+  } catch (err) {
+    console.error('Submit error:', err);
+    alert('Submission failed. Please check your connection and try again.');
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Join the Tampa pilot →';
+  }
+});
+
+/* ===== FAQ ACCORDION ===== */
+document.querySelectorAll('.faq-item').forEach(item => {
+  item.querySelector('.faq-q').addEventListener('click', () => {
+    const open = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!open) item.classList.add('open');
+  });
+});
+</script>
+</body>
+</html>
